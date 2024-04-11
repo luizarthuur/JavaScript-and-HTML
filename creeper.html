@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pr-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Creeper!</title>
+</head>
+<body>
+    <canvas width="350px" height="300px"></canvas>
+</body>
+</html>
+
+<script>
+
+    let tela = document.querySelector('canvas');
+    let pincel = tela.getContext('2d');
+
+    pincel.fillStyle = 'darkgreen';
+    pincel.fillRect(0, 0, 350,300);
+
+    pincel.fillStyle = 'Black';
+    pincel.fillRect(45,50,90,90);
+
+    pincel.fillStyle = 'Black';
+    pincel.fillRect(205,50,90,90);
+
+    pincel.fillStyle = 'Black';
+    pincel.fillRect(135,140,70,100);
+
+    
+    pincel.fillStyle = 'Black';
+    pincel.fillRect(95,180,40,120);
+
+    pincel.fillStyle = 'Black';
+    pincel.fillRect(205,180,40,120);
+
+</script>
