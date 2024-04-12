@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pr-br">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,7 +10,13 @@
 </body>
 </html>
 
+
+
 <script>
+
+
+
+   
     let tela = document.querySelector('canvas');
     let pincel = tela.getContext('2d');
 
@@ -18,21 +24,69 @@
 
     pincel.fillRect(0,0, 600,400);
 
+    let cores = ['blue', 'red', 'green'];
+
+    let i = 0
+    var p = 0
+
     function desenhaRetangulo(evento) {
 
-        var x = evento.pageX - tela.offsetLeft;
-        var y = evento.pageY - tela.offsetTop;
+        if (evento.shiftKey) {
+            var x = evento.pageX - tela.offsetLeft;
+            var y = evento.pageY - tela.offsetTop;
 
-        pincel.fillStyle = 'blue'
+            p++
 
-        pincel.fillRect(x,y, 50,50);
+            let t = 50 + (p*50)
 
-        pincel.fill();
+            if (t >= 200) {
+                t = 200
+            }
 
-        console.log(x + ',' + y);
+            if (evento.shiftKey && evento.altKey) {
+                t = t - 150
+            }
 
+            pincel.fillStyle = cores[i]
+
+            pincel.fillRect(x,y, t,t);
+
+            pincel.fill();
+
+            console.log(x + ',' + y);
+        }
+
+        else {
+            
+            var x = evento.pageX - tela.offsetLeft;
+            var y = evento.pageY - tela.offsetTop;
+
+            pincel.fillStyle = cores[i]
+
+            pincel.fillRect(x,y, 50,50);
+
+            pincel.fill();
+
+            console.log(x + ',' + y);
+        }
     }
 
-    tela.onclick = desenhaRetangulo;
+    tela.onclick = desenhaRetangulo;    
+    
+    function mudaCor() {
+        i++;
+
+        if (i >= cores.length) {
+            i = 0
+        }
+
+        return false;
+    }
+
+
+
+
+    tela.oncontextmenu = mudaCor;
+
 
 </script>

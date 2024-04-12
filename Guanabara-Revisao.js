@@ -30,3 +30,21 @@ do {
 
 */
 
+DOM
+
+var d = document.getElementById('luiz');
+
+getElementBy - id classname 
+
+queryselector
+
+document.write(d.innerText);
+
+d.style
+
+d.innerHTML
+
+d.innerText
+
+
+Elementos DOM
