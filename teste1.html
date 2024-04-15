@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Programa 4</title>
+</head>
+<body>
+
+    <p>Escolha uma cor!</p>
+    <input type="color" name="cor" id="cor">
+    <br>
+    <canvas width="600" height="400"></canvas>
+    <br>
+
+</body>
+</html>
+
+
+<script>
+
+    var cor = document.getElementById('cor');
+
+    let tela = document.querySelector('canvas');
+    let pincel = tela.getContext('2d');
+
+    pincel.fillStyle = 'lightgrey';
+
+    pincel.fillRect(0,0, 600,400);
+
+    function desenhaRetangulo(evento) {
+    
+        var x = evento.pageX - tela.offsetLeft;
+        var y = evento.pageY - tela.offsetTop;     
+
+        pincel.fillStyle = cor.value;
+
+        pincel.fillRect(x,y, 25,25);
+
+        pincel.fill();
+
+}   
+
+
+
+    tela.onclick = desenhaRetangulo1;
+
+</script>

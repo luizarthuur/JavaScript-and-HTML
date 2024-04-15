@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Programa 7</title>
+</head>
+<body>
+    <canvas width="600" height="400"></canvas>
+</body>
+</html>
+
+<script>
+
+    let x = 10;
+    let y = 10;
+
+    var esquerda = 37;
+    var cima = 38;
+    var direita = 39;
+    var baixo = 40;
+
+    taxa = 10
+
+   
+
+
+    let tela = document.querySelector('canvas');
+    let pincel = tela.getContext('2d');
+
+    pincel.fillStyle = 'white';
+
+    pincel.fillRect(0,0, 600,400);
+
+    function leDoTeclado(evento) {
+        var tecla = evento.keyCode
+
+        if (x >= 550) {
+            x = 550
+        }
+
+        else if (x <= 10){
+            x = 10
+        }
+
+        if (y >= 350) {
+            y = 350
+        }
+
+        else if (y <= 10){
+            y = 10
+        }
+
+        if (tecla == 37) {
+            x = x - taxa
+        }
+
+        else if (tecla == 38) {
+            y = y - taxa
+        }
+
+        else if (tecla == 39) {
+            x = x + taxa
+        }
+
+        else if (tecla == 40) {
+            y = y + taxa
+        }
+
+
+
+    }
+    function criarQuadrado(x,y,cor) {
+
+        pincel.fillStyle = cor;
+
+        pincel.fillRect(x, y , 25, 25);
+
+        pincel.fill();
+
+    }
+
+    function limpaTela() {
+        pincel.clearRect(0,0,600,400)
+    }
+
+    function atualizaTela () {
+        limpaTela();
+        criarQuadrado(x,y,'black');    
+    }
+
+
+// como saber qual tecla foi pressionada?
+
+
+
+
+
+
+setInterval(atualizaTela, 10);
+
+document.onkeydown = leDoTeclado;
+
+
+
+    
+
+</script>
