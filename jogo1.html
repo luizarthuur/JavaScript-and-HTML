@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jogo 1</title>
+</head>
+<body>
+    <canvas width="700" height="500"></canvas>
+</body>
+</html>
+
+<script>
+
+
+
+    let tela = document.querySelector('canvas');
+    let pincel = tela.getContext('2d');
+
+    var xAleatorio = 0;
+    var yAleatorio = 0;
+
+    pincel.fillStyle = 'white';
+
+    pincel.fillRect(0,0, 600,400);
+
+    function criarQuadrado(x,y,cor,tx,ty) {
+
+        pincel.fillStyle = cor;
+
+        pincel.fillRect(x, y , tx, ty);
+
+        pincel.fill();
+
+    }
+
+    function limpaTela() {
+        pincel.clearRect(0,0,700,500)
+    }
+
+    function atualizaTela () {
+        limpaTela();
+        criarQuadrado(x,y,'black', 25,25);    
+    }
+
+    function desenhaAlvo(x,y) {
+
+    criarQuadrado(x,y,'black', 100,100)
+    criarQuadrado(x + 25, y + 25, 'white', 50,50)
+    criarQuadrado(x + 37,y + 37, 'red', 25,25)
+    criarQuadrado(x + 44,y + 44,'yellow',10,10)
+}
+
+
+
+    function sorteiaPosicao(maximo) {
+        return Math.floor(Math.random() * maximo)
+    }
+
+    function atualizaTela () {
+    limpaTela()
+    xAleatorio = sorteiaPosicao(600);
+    yAleatorio = sorteiaPosicao(400);
+
+    desenhaAlvo(xAleatorio,yAleatorio);
+
+}
+
+    function dispara (evento) {
+
+        var x = evento.pageX - tela.offsetLeft;
+        var y = evento.pageY - tela.offsetTop;
+
+        if ((x <= xAleatorio + 44 + 10 && x >= xAleatorio + 44) && (y <= yAleatorio + 44 + 10 && y >= yAleatorio + 44)) {
+            alert('Você Venceu!')
+        }
+
+    }
+
+    setInterval(atualizaTela, 1000);
+    tela.onclick = dispara;
+
+</script>
